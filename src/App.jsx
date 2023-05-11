@@ -3,8 +3,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons'
 import Destination from './components/Destination'
 
+import data from "./travel_data";
+import React from 'react';
+
 function App() {
 
+  let items = data.map((item) => {
+    return (
+            <React.Fragment key={item.id}>
+              <Destination
+                  item={item}
+                  />
+              <hr />
+          </React.Fragment>
+      )
+  })
 
   return (
     <>
@@ -14,38 +27,11 @@ function App() {
       </nav>
 
       <section className="hero">
-          <Destination
-                id = {1}
-                img= "https://source.unsplash.com/WLxQvbMyfas"
-                country= "Japan"
-                location= "Mount Fuji"
-                duration= "12 Jan, 2021 - 24 Jan, 2021"
-                description= "Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists."
-           />
-
-            <hr />
-          <Destination
-                id= {2}
-                img= "https://source.unsplash.com/JmuyB_LibRo"
-                country= "Australia"
-                location= "Sydney Opera House"
-                duration= "27 May, 2021 - 8 Jun, 2021"
-                description= "The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings"
-          />
-
-            <hr />
-          <Destination
-                id= {3}
-                img= "https://source.unsplash.com/3PeSjpLVtLg"
-                country= "Norway"
-                location= "Geirangerfjord"
-                duration= "01 Oct, 2021 - 18 Nov, 2021"
-                description= "The Geiranger Fjord is a fjord in the Sunnmøre region of Møre og Romsdal county, Norway. It is located entirely in the Stranda Municipality."
-           />
+              {items}
       </section>
 
     </>
   )
 }
 
-export default App
+export default App;
